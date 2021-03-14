@@ -26,3 +26,7 @@ Route::get('/items', [ItemController::class, 'index']);
 Route::post('/item/store', [ItemController::class, 'store']);
 Route::put('/item/{id}', [ItemController::class, 'update']);
 Route::delete('item/{id}', [ItemController::class, 'destroy']);
+// ADDED 11th Mar 2021:
+Route::get('/index', function () {
+    return view('index');
+});

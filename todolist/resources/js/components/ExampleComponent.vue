@@ -1,23 +1,21 @@
-<template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
+    import { Line } from 'vue-chartjs'
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        extends: Line,
+        mounted () {
+          this.renderChart({
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+              {
+                label: 'Data One',
+                backgroundColor: '#f87979',
+                data: [40, 39, 10, 40, 39, 80, 40]
+              }
+            ]
+          }, {responsive: true, maintainAspectRatio: false})
         }
-    }
+      }
 </script>
+
+<style scoped>
+</style>
