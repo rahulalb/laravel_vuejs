@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 
 
 const MapComponent = require('./components/MapComponent.vue').default
+Vue.component('choropleth-map', MapComponent)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

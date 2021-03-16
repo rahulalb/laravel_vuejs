@@ -1,14 +1,16 @@
 <script>
-import * as countryData from '../countries.json'
+import  countryData from '../countries.json'
 
 import { generateChart } from 'vue-chartjs'
-import ChartGeo from  'chartjs-chart-geo'
-const countries = ChartGeo.topojson.feature(countryData, countryData.objects.countries).features
+import {Choropleth, topojson} from  'chartjs-chart-geo'
+const countries = topojson.feature(countryData, countryData.objects.countries).features
 
-const ChoroplethMap = generateChart('choropleth-map', 'choropleth')
+
+const ChoroplethChart = generateChart('choropleth-map', "choropleth")
+
 
 export default {
-  extends: ChoroplethMap,
+  extends: ChoroplethChart,
   mounted () {
         this.renderChart({
         labels: countries.map((d) => d.properties.name),
