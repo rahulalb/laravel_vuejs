@@ -2,12 +2,11 @@
 import  countryData from '../countries.json'
 
 import { generateChart } from 'vue-chartjs'
-import {Choropleth, topojson} from  'chartjs-chart-geo'
+import {choropleth, topojson} from  'chartjs-chart-geo'
+
 const countries = topojson.feature(countryData, countryData.objects.countries).features
 
-
-const ChoroplethChart = generateChart('choropleth-map', "choropleth")
-
+const ChoroplethChart = generateChart("choropleth", "choropleth");
 
 export default {
   extends: ChoroplethChart,
@@ -17,6 +16,13 @@ export default {
         datasets: [
             {
                 label: 'Countries',
+                backgroundColor: context => {
+                  if (context.dataIndex == null) {
+                    return null;
+                  }
+                  const value = context.dataset.data[context.dataIndex];
+                  return `rgb(0, 0, ${value.value * 255})`;
+                },
                 data: countries.map((d) => ({feature: d, value: Math.random()}))
             }
         ]

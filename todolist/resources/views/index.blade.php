@@ -8,7 +8,7 @@
   <div id="app">
     <choropleth-map></choropleth-map>
   </div>
-  
+
   <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>
